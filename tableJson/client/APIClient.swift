@@ -12,10 +12,8 @@ struct APIClient {
 
     let viewController: ViewController
     let url = URL(string: "https://api.myjson.com/bins/vi56v")
-//    URL(fileURLWithPath: file)
     
     func fetchData() {
-//        guard let file = Bundle.main.path(forResource: "tableData", ofType: "json"),
           guard let data = try? Data(contentsOf: url!, options: []),
             let companies = try? JSONDecoder().decode(Companies.self, from: data) else { return }
         

@@ -11,10 +11,10 @@ import UIKit
 struct APIClient {
 
     let viewController: ViewController
-    let url = URL(string: "https://api.myjson.com/bins/vi56v")
     
     func fetchData() {
-          guard let data = try? Data(contentsOf: url!, options: []),
+         guard let file = Bundle.main.path(forResource: "tableData", ofType: "json"),
+            let data = try? Data(contentsOf: URL(fileURLWithPath: file), options: []),
             let companies = try? JSONDecoder().decode(Companies.self, from: data) else { return }
         
         viewController.companiesArray = companies.companies
